@@ -48,21 +48,17 @@ export default function PullRequestList() {
           <div>Mutfağa henüz sipariş düşmemiş.</div>
         </div>
       ) : (
-        <table className="list98">
-          <thead>
-            <tr><th>Başlık</th><th>Yazar</th><th>Durum</th><th>Tarih</th></tr>
-          </thead>
-          <tbody>
-            {pulls.map((p) => (
-              <tr key={p.id} onClick={() => navigate(`/pulls/${p.id}`)}>
-                <td>{p.title}</td>
-                <td>@{p.author?.username}</td>
-                <td><span className={`badge ${p.status}`}>{STATUS_LABEL[p.status]}</span></td>
-                <td>{new Date(p.created_at).toLocaleDateString('tr-TR')}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="ticket-list">
+          {pulls.map((p) => (
+            <div key={p.id} className="ticket-row" onClick={() => navigate(`/pulls/${p.id}`)}>
+              <div className="ticket-row-main">
+                <div className="ticket-row-title">{p.title}</div>
+                <div className="ticket-row-meta">@{p.author?.username} · {new Date(p.created_at).toLocaleDateString('tr-TR')}</div>
+              </div>
+              <span className={`badge ${p.status}`}>{STATUS_LABEL[p.status]}</span>
+            </div>
+          ))}
+        </div>
       )}
     </Window>
   );

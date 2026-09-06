@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const MENU_ICONS = {
+  'Dosya': 'fa-solid fa-utensils',
+  'Görünüm': 'fa-solid fa-eye',
+  'Yardım': 'fa-solid fa-circle-question',
+};
+
 export default function Window({ icon, title, menu, statusLeft, statusRight, children, width }) {
   const [openMenu, setOpenMenu] = useState(null);
   const [maximized, setMaximized] = useState(false);
@@ -15,7 +21,7 @@ export default function Window({ icon, title, menu, statusLeft, statusRight, chi
     return () => document.removeEventListener('mousedown', onDocClick);
   }, []);
 
-  function handleMinimize() {
+  function handleBack() {
     navigate(-1);
   }
   function handleMaximize() {
@@ -27,32 +33,32 @@ export default function Window({ icon, title, menu, statusLeft, statusRight, chi
 
   return (
     <div
-      className={'win98-window bevel-raised' + (maximized ? ' maximized' : '')}
-      style={!maximized && width ? { width, maxWidth: '94vw' } : undefined}
+      className={'game-panel' + (maximized ? ' maximized' : '')}
+      style={!maximized && width ? { width, maxWidth: '96vw' } : undefined}
     >
-      <div className="win98-titlebar">
-        <div className="win98-titlebar-text">
-          {icon && <span className="win98-titlebar-icon">{icon}</span>}
-          <span>{title}</span>
+      <div className="game-panel-header">
+        {icon && <div className="game-panel-badge">{icon}</div>}
+        <div className="game-panel-heading">
+          <div className="game-panel-title">{title}</div>
+          {(statusLeft || statusRight) && (
+            <div className="game-panel-substatus">
+              {statusLeft && <span className="chip">{statusLeft}</span>}
+              {statusRight && <span className="chip chip-accent">{statusRight}</span>}
+            </div>
+          )}
         </div>
-        <div className="win98-titlebar-controls">
-          <div className="win98-tbtn bevel-raised" title="Küçült" onClick={handleMinimize}><i className="fa-solid fa-window-minimize" /></div>
-          <div className="win98-tbtn bevel-raised" title={maximized ? 'Eski Boyuta Getir' : 'Büyüt'} onClick={handleMaximize}>
-            <i className={maximized ? 'fa-regular fa-window-restore' : 'fa-regular fa-square'} />
-          </div>
-          <div className="win98-tbtn bevel-raised" title="Kapat" onClick={handleClose}><i className="fa-solid fa-xmark" /></div>
-        </div>
-      </div>
-      {menu && menu.length > 0 && (
-        <div className="win98-menubar" ref={ref}>
-          {menu.map((m) => (
+
+        <div className="game-panel-actions" ref={ref}>
+          {menu && menu.map((m) => (
             <div className="menubar-item" key={m.label}>
-              <span
+              <button
+                type="button"
+                className={'game-icon-btn' + (openMenu === m.label ? ' active' : '')}
+                title={m.label}
                 onClick={() => setOpenMenu(openMenu === m.label ? null : m.label)}
-                style={openMenu === m.label ? { background: 'var(--accent)', color: 'var(--text-inverse)' } : undefined}
               >
-                {m.label}
-              </span>
+                <i className={MENU_ICONS[m.label] || 'fa-solid fa-ellipsis'} />
+              </button>
               {openMenu === m.label && (
                 <div className="menu-dropdown">
                   {m.items.map((it, i) => it.sep ? (
@@ -71,15 +77,19 @@ export default function Window({ icon, title, menu, statusLeft, statusRight, chi
               )}
             </div>
           ))}
+          <button type="button" className="game-icon-btn" title="Geri" onClick={handleBack}>
+            <i className="fa-solid fa-arrow-left" />
+          </button>
+          <button type="button" className="game-icon-btn" title={maximized ? 'Küçült' : 'Genişlet'} onClick={handleMaximize}>
+            <i className={maximized ? 'fa-solid fa-compress' : 'fa-solid fa-expand'} />
+          </button>
+          <button type="button" className="game-icon-btn danger" title="Kapat" onClick={handleClose}>
+            <i className="fa-solid fa-xmark" />
+          </button>
         </div>
-      )}
-      <div className="win98-body">{children}</div>
-      {(statusLeft || statusRight) && (
-        <div className="win98-statusbar">
-          <span>{statusLeft}</span>
-          <span>{statusRight}</span>
-        </div>
-      )}
+      </div>
+
+      <div className="game-panel-body">{children}</div>
     </div>
   );
 }
