@@ -29,7 +29,7 @@ export default function App() {
   if (!ready) {
     return (
       <div className="desktop" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div className="brand-title">Localde Çalışıyordu yükleniyor…</div>
+        <div className="brand-title"><i className="fa-solid fa-fire-burner icon-inline" />LocalMutfak ocağı ısınıyor…</div>
       </div>
     );
   }

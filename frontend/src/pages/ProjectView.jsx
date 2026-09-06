@@ -31,7 +31,7 @@ export default function ProjectView() {
   useEffect(load, [id]);
 
   if (error) return <Window icon={<i className="fa-solid fa-triangle-exclamation" />} title="Hata"><div className="error-box">{error}</div></Window>;
-  if (!project) return <Window icon={<i className="fa-solid fa-hourglass-half" />} title="Yükleniyor…"><p>Proje yükleniyor…</p></Window>;
+  if (!project) return <Window icon={<i className="fa-solid fa-fire-burner" />} title="Yükleniyor…"><p>Proje yükleniyor…</p></Window>;
 
   const isOwner = user && user.id === project.owner_id;
   const codeFiles = files.filter((f) => f.type !== 'lib');
@@ -75,7 +75,7 @@ export default function ProjectView() {
 
   return (
     <Window
-      icon={<i className={project.visibility === 'private' ? 'fa-solid fa-lock' : 'fa-solid fa-folder-open'} />}
+      icon={<i className={project.visibility === 'private' ? 'fa-solid fa-lock' : 'fa-solid fa-utensils'} />}
       title={<>{project.title} — <span className="user-link" onClick={() => navigate(`/u/${project.owner?.username}`)}>@{project.owner?.username}</span></>}
       menu={menu}
       statusLeft={project.visibility === 'private' ? 'Private' : 'Public'}
@@ -88,7 +88,7 @@ export default function ProjectView() {
       )}
       {error && <div className="error-box">{error}</div>}
       <div className="toolbar">
-        <span className={`badge ${project.visibility}`}>{project.visibility === 'public' ? 'Public' : 'Private'}</span>
+        <span className={`badge ${project.visibility}`}>{project.visibility === 'public' ? 'Açık Mutfak' : 'Kapalı Mutfak'}</span>
         <span className="hint">{project.description}</span>
         <div className="spacer" />
         {isOwner ? (

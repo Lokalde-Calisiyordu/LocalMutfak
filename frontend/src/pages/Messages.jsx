@@ -63,8 +63,8 @@ export default function Messages() {
 
   return (
     <Window
-      icon={<i className="fa-solid fa-envelope" />}
-      title="Mesajlar — Localde Çalışıyordu"
+      icon={<i className="fa-solid fa-bell-concierge" />}
+      title="Mesajlar — LocalMutfak"
       menu={menu}
       statusLeft={`${conversations.length} konuşma`}
     >
@@ -77,7 +77,7 @@ export default function Messages() {
 
       <div className="messages-layout">
         <div className="conv-list bevel-sunken" style={{ padding: 4 }}>
-          {conversations.length === 0 && <p className="hint" style={{ padding: 8 }}>Henüz konuşman yok.</p>}
+          {conversations.length === 0 && <p className="hint" style={{ padding: 8 }}>Servis telsizi sessiz, henüz konuşman yok.</p>}
           {conversations.map((c) => (
             <div
               key={c.user.id}

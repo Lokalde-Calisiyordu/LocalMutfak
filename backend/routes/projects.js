@@ -69,7 +69,7 @@ router.post('/', requireAuth, async (req, res, next) => {
     if (!title || !title.trim()) return res.status(400).json({ error: 'Başlık gerekli.' });
     if (!['public', 'private'].includes(visibility)) return res.status(400).json({ error: 'Geçersiz görünürlük.' });
     const defaultFiles = files.length ? files : [
-      { filename: 'index.html', type: 'html', content: '<h1>Merhaba, Localde Çalışıyordu!</h1>' },
+      { filename: 'index.html', type: 'html', content: '<h1>Merhaba, LocalMutfak!</h1>' },
       { filename: 'style.css', type: 'css', content: 'body { font-family: sans-serif; }' },
       { filename: 'script.js', type: 'js', content: "console.log('merhaba');" },
     ];

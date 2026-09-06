@@ -30,7 +30,7 @@ export default function ProjectWorkspaceView() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <Window icon={<i className="fa-solid fa-hourglass-half" />} title="Yükleniyor…"><p>Yükleniyor…</p></Window>;
+  if (loading) return <Window icon={<i className="fa-solid fa-fire-burner" />} title="Yükleniyor…"><p>Yükleniyor…</p></Window>;
   if (error) return <Window icon={<i className="fa-solid fa-triangle-exclamation" />} title="Hata"><div className="error-box">{error}</div></Window>;
 
   const codeFiles = files.filter((f) => f.type !== 'lib');
@@ -39,7 +39,7 @@ export default function ProjectWorkspaceView() {
   return (
     <Window
       icon={<i className="fa-solid fa-laptop-code" />}
-      title={`Görüntüle: ${project.title} — Localde Çalışıyordu`}
+      title={`Görüntüle: ${project.title} — LocalMutfak`}
       width="100%"
       statusLeft={active?.filename || ''}
       statusRight="Salt okunur"

@@ -10,7 +10,7 @@ import { POPULAR_LIBS } from '../lib/popularLibs.js';
 const DEFAULT_FILES = [
   { filename: 'index.html', type: 'html', content: '<h1>Merhaba, dünya!</h1>\n<p>Kodlamaya başla.</p>' },
   { filename: 'style.css', type: 'css', content: 'body {\n  font-family: sans-serif;\n  background: #111;\n  color: #eee;\n}' },
-  { filename: 'script.js', type: 'js', content: "console.log('Localde Çalışıyordu üzerinde çalışıyor!');" },
+  { filename: 'script.js', type: 'js', content: "console.log('LocalMutfak üzerinde çalışıyor!');" },
 ];
 
 function typeFromExt(filename) {
@@ -170,15 +170,15 @@ export default function Editor() {
   ];
 
   if (loading) {
-    return <Window icon={<i className="fa-solid fa-hourglass-half" />} title="Yükleniyor…"><p>Proje yükleniyor…</p></Window>;
+    return <Window icon={<i className="fa-solid fa-fire-burner" />} title="Yükleniyor…"><p>Proje yükleniyor…</p></Window>;
   }
 
   return (
     <Window
       icon={<i className="fa-solid fa-gear" />}
-      title={`${isEdit ? 'Düzenle' : 'Yeni Proje'}: ${title} — Localde Çalışıyordu`}
+      title={`${isEdit ? 'Düzenle' : 'Yeni Proje'}: ${title} — LocalMutfak`}
       menu={menu}
-      statusLeft={visibility === 'public' ? 'Public' : 'Private'}
+      statusLeft={visibility === 'public' ? 'Açık Mutfak' : 'Kapalı Mutfak'}
       statusRight={saving ? 'Kaydediliyor…' : 'Hazır'}
     >
       {showHelp && (
@@ -208,10 +208,10 @@ export default function Editor() {
           <div className="section-title">GÖRÜNÜRLÜK</div>
           <div className="visibility-toggle">
             <div className={'visibility-btn' + (visibility === 'public' ? ' active public' : '')} onClick={() => setVisibility('public')}>
-              <i className="fa-solid fa-earth-americas" /> Public
+              <i className="fa-solid fa-earth-americas" /> Açık Mutfak
             </div>
             <div className={'visibility-btn' + (visibility === 'private' ? ' active private' : '')} onClick={() => setVisibility('private')}>
-              <i className="fa-solid fa-lock" /> Private
+              <i className="fa-solid fa-lock" /> Kapalı Mutfak
             </div>
           </div>
 

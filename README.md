@@ -1,8 +1,9 @@
-# Localde Çalışıyordu
+# LocalMutfak
 
-Localde Çalışıyordu, kullanıcıların HTML, CSS ve JavaScript kodlarını yazıp çalıştırabildiği, projelerini paylaşabildiği ve diğer geliştiricilerle iş birliği yapabildiği bir yazılım platformu projesidir. CodePen benzeri bir kod editörü deneyimi sunarken, aynı zamanda proje paylaşımı, pull request sistemi, profil yönetimi ve mesajlaşma gibi sosyal yazılım geliştirme özelliklerini bir araya getirir.
+LocalMutfak, kullanıcıların HTML, CSS ve JavaScript kodlarını yazıp çalıştırabildiği, projelerini paylaşabildiği ve diğer geliştiricilerle iş birliği yapabildiği bir yazılım platformu projesidir. CodePen benzeri bir kod editörü deneyimi sunarken, aynı zamanda proje paylaşımı, pull request sistemi, profil yönetimi ve mesajlaşma gibi sosyal yazılım geliştirme özelliklerini bir araya getirir.
 
 ## https://localde-calisiyordu.vercel.app
+*(Proje LocalMutfak olarak yeniden adlandırıldı; canlı adres yeni deploy ile güncellenene kadar eski bağlantı geçerlidir.)*
 
 ## Proje Hakkında
 
@@ -13,6 +14,17 @@ Bu proje, geliştiricilerin:
 - Profil, takip ve mesajlaşma özellikleriyle bir topluluk deneyimi yaşayabildiği
 
 bir ortam oluşturmayı hedefler.
+
+## Mutfak Temalı Arayüz
+
+LocalMutfak'ın arayüzü, oyunlaştırılmış bir mutfak/restoran deneyimi olarak yeniden tasarlandı:
+
+- **Masaüstü / kontrol paneli**, karolu bir mutfak zemini ve paslanmaz çelik dokusuyla karşılıyor.
+- **Pencereler**, bir sipariş fişi / tarif kartı gibi görünüyor; başlık çubukları mutfak istasyonu etiketleri gibi tasarlandı.
+- **Butonlar**, bir oyun arayüzündeki gibi kalın, "basılabilir" servis zili düğmelerine benziyor.
+- **Proje/Pull Request akışı**, bir mutfakta sipariş hazırlama ve teslim etme deneyimini çağrıştıracak renk ve etiketlerle (hazırlanıyor, mutfaktan çıktı, teslim edildi vb.) sunuluyor.
+
+Bu tema tamamen CSS tasarım sistemi (`frontend/src/styles/kitchen-ui.css`) üzerinden uygulanır; mevcut bileşen yapısı korunarak sadece görsel kimlik değiştirilmiştir.
 
 ## Kullanılan Teknolojiler
 
@@ -61,7 +73,7 @@ npm run dev
 Backend artık geçici SQLite dosyası kullanmaz; PostgreSQL bağlantısı olmadan başlamaz. Yerel geliştirmede `backend/.env` içine bir PostgreSQL bağlantısı ekleyin:
 
 ```env
-DATABASE_URL=postgresql://kullanici:sifre@localhost:5432/localde_calisiyordu
+DATABASE_URL=postgresql://kullanici:sifre@localhost:5432/localmutfak
 JWT_SECRET=yerel-gelistirme-gizli-anahtari
 ```
 

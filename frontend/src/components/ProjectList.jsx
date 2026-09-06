@@ -29,15 +29,15 @@ export default function ProjectList({ mode, tabs }) {
   const title = titleMap[mode] || titleMap.public;
 
   const menu = [
-    { label: 'Dosya', items: [{ label: 'Yeni Proje', icon: 'fa-solid fa-file-circle-plus', onClick: () => navigate('/projects/new') }] },
+    { label: 'Dosya', items: [{ label: 'Yeni Proje', icon: 'fa-solid fa-mortar-pestle', onClick: () => navigate('/projects/new') }] },
     { label: 'Görünüm', items: [{ label: 'Yenile', icon: 'fa-solid fa-rotate', onClick: load }] },
     { label: 'Yardım', items: [{ label: 'Hakkında', icon: 'fa-solid fa-circle-info', onClick: () => setShowHelp(true) }] },
   ];
 
   return (
     <Window
-      icon={<i className={mode === 'mine' ? 'fa-solid fa-folder-open' : mode === 'following' ? 'fa-solid fa-user-group' : 'fa-solid fa-earth-americas'} />}
-      title={`${title} — Localde Çalışıyordu`}
+      icon={<i className={mode === 'mine' ? 'fa-solid fa-utensils' : mode === 'following' ? 'fa-solid fa-user-group' : 'fa-solid fa-earth-americas'} />}
+      title={`${title} — LocalMutfak`}
       menu={menu}
       statusLeft={`${projects.length} öğe`}
       statusRight={loading ? 'Yükleniyor…' : 'Hazır'}
@@ -67,17 +67,17 @@ export default function ProjectList({ mode, tabs }) {
         )}
         <div className="spacer" />
         <Button98 variant="primary" onClick={() => navigate('/projects/new')}>
-          <i className="fa-solid fa-file-circle-plus icon-inline" />Yeni Proje
+          <i className="fa-solid fa-mortar-pestle icon-inline" />Yeni Proje
         </Button98>
       </div>
 
       {!loading && projects.length === 0 && (
         <div className="empty-state">
-          <div className="glyph"><i className="fa-regular fa-folder-open" /></div>
+          <div className="glyph"><i className="fa-solid fa-utensils" /></div>
           <div>
-            {mode === 'mine' && 'Henüz projen yok.'}
+            {mode === 'mine' && 'Mutfağın henüz boş, ilk tabağını hazırla!'}
             {mode === 'following' && 'Takip ettiğin kimse henüz herkese açık proje paylaşmamış. Keşfet\'ten yeni insanlar bulup takip edebilirsin.'}
-            {mode === 'public' && 'Hiç proje bulunamadı.'}
+            {mode === 'public' && 'Ocakta hiçbir şey pişmiyor, aramayı değiştirip tekrar dene.'}
           </div>
         </div>
       )}
@@ -85,7 +85,7 @@ export default function ProjectList({ mode, tabs }) {
       <div className="icon-grid">
         {projects.map((p) => (
           <div key={p.id} className="icon-item" onDoubleClick={() => navigate(`/projects/${p.id}`)} onClick={(e) => e.detail === 2 && navigate(`/projects/${p.id}`)}>
-            <div className="glyph"><i className={p.visibility === 'private' ? 'fa-solid fa-lock' : 'fa-solid fa-folder'} /></div>
+            <div className="glyph"><i className={p.visibility === 'private' ? 'fa-solid fa-lock' : 'fa-solid fa-bowl-food'} /></div>
             <div className="name">{p.title}</div>
             <div className="meta">
               <span className="user-link" onClick={(e) => { e.stopPropagation(); navigate(`/u/${p.owner?.username}`); }}>@{p.owner?.username}</span>

@@ -13,7 +13,7 @@ const HOST = process.env.HOST || '0.0.0.0';
 app.use(cors());
 app.use(express.json({ limit: '2mb' }));
 
-app.get('/api/health', (req, res) => res.json({ ok: true, name: 'Localde Çalışıyordu API' }));
+app.get('/api/health', (req, res) => res.json({ ok: true, name: 'LocalMutfak API' }));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
@@ -29,7 +29,7 @@ app.use((err, req, res, next) => {
 });
 
 const server = app.listen(PORT, HOST, () => {
-  console.log(`Localde Çalışıyordu API http://${HOST}:${PORT} adresinde çalışıyor`);
+  console.log(`LocalMutfak API http://${HOST}:${PORT} adresinde çalışıyor`);
 });
 
 export default server;

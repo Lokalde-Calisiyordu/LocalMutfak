@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-export const JWT_SECRET = process.env.JWT_SECRET || 'localde-calisiyordu-dev-secret-change-me';
+export const JWT_SECRET = process.env.JWT_SECRET || 'localmutfak-dev-secret-change-me';
 
 export function requireAuth(req, res, next) {
   const header = req.headers.authorization || '';

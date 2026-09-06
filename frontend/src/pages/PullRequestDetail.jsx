@@ -7,7 +7,7 @@ import Button98 from '../components/Button98.jsx';
 import DiffView from '../components/DiffView.jsx';
 import InfoDialog from '../components/InfoDialog.jsx';
 
-const STATUS_LABEL = { open: 'Açık', merged: 'Birleştirildi', closed: 'Kapatıldı' };
+const STATUS_LABEL = { open: 'Hazırlanıyor', merged: 'Servis Edildi', closed: 'İptal Edildi' };
 
 export default function PullRequestDetail() {
   const { id } = useParams();
@@ -25,7 +25,7 @@ export default function PullRequestDetail() {
   useEffect(load, [id]);
 
   if (error) return <Window icon={<i className="fa-solid fa-triangle-exclamation" />} title="Hata"><div className="error-box">{error}</div></Window>;
-  if (!data) return <Window icon={<i className="fa-solid fa-hourglass-half" />} title="Yükleniyor…"><p>Yükleniyor…</p></Window>;
+  if (!data) return <Window icon={<i className="fa-solid fa-fire-burner" />} title="Yükleniyor…"><p>Yükleniyor…</p></Window>;
 
   const { pull, project, currentFiles, proposedFiles, comments } = data;
   const isTargetOwner = user && user.id === project.owner_id;

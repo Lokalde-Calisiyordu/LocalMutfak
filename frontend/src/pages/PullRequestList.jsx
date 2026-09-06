@@ -5,7 +5,7 @@ import Window from '../components/Window.jsx';
 import Button98 from '../components/Button98.jsx';
 import InfoDialog from '../components/InfoDialog.jsx';
 
-const STATUS_LABEL = { open: 'Açık', merged: 'Birleştirildi', closed: 'Kapatıldı' };
+const STATUS_LABEL = { open: 'Hazırlanıyor', merged: 'Servis Edildi', closed: 'İptal Edildi' };
 
 export default function PullRequestList() {
   const { id } = useParams();
@@ -45,7 +45,7 @@ export default function PullRequestList() {
       {pulls.length === 0 ? (
         <div className="empty-state">
           <div className="glyph"><i className="fa-solid fa-code-pull-request" /></div>
-          <div>Henüz pull request yok.</div>
+          <div>Mutfağa henüz sipariş düşmemiş.</div>
         </div>
       ) : (
         <table className="list98">

@@ -24,8 +24,8 @@ export default function Login() {
 
   return (
     <div className="desktop" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Window icon={<i className="fa-solid fa-key" />} title="Oturum Aç — Localde Çalışıyordu" width="360px" statusLeft="Hazır">
-        <div className="brand-title" style={{ marginBottom: 14 }}><i className="fa-solid fa-window-restore icon-inline" />Localde Çalışıyordu</div>
+      <Window icon={<i className="fa-solid fa-key" />} title="Oturum Aç — LocalMutfak" width="360px" statusLeft="Hazır">
+        <div className="brand-title" style={{ marginBottom: 14 }}><i className="fa-solid fa-kitchen-set icon-inline" />LocalMutfak</div>
         {error && <div className="error-box">{error}</div>}
         <form onSubmit={submit}>
           <div className="field">

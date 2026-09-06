@@ -31,7 +31,7 @@ export default function PullRequestNew() {
   }, [id]);
 
   if (error) return <Window icon={<i className="fa-solid fa-triangle-exclamation" />} title="Hata"><div className="error-box">{error}</div></Window>;
-  if (!fork) return <Window icon={<i className="fa-solid fa-hourglass-half" />} title="Yükleniyor…"><p>Yükleniyor…</p></Window>;
+  if (!fork) return <Window icon={<i className="fa-solid fa-fire-burner" />} title="Yükleniyor…"><p>Yükleniyor…</p></Window>;
   if (!fork.parent_id) {
     return (
       <Window icon={<i className="fa-solid fa-triangle-exclamation" />} title="Pull Request Gönderilemez">

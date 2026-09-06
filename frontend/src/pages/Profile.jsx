@@ -27,7 +27,7 @@ export default function Profile() {
   useEffect(() => { setData(null); setError(''); load(); }, [username]);
 
   if (error) return <Window icon={<i className="fa-solid fa-triangle-exclamation" />} title="Hata"><div className="error-box">{error}</div></Window>;
-  if (!data) return <Window icon={<i className="fa-solid fa-hourglass-half" />} title="Yükleniyor…"><p>Profil yükleniyor…</p></Window>;
+  if (!data) return <Window icon={<i className="fa-solid fa-fire-burner" />} title="Yükleniyor…"><p>Profil yükleniyor…</p></Window>;
 
   const { user, followers, following, isOwn, isFollowing, projects } = data;
 
@@ -64,7 +64,7 @@ export default function Profile() {
   return (
     <Window
       icon={<i className="fa-solid fa-id-card" />}
-      title={`Profil: @${user.username} — Localde Çalışıyordu`}
+      title={`Profil: @${user.username} — LocalMutfak`}
       menu={menu}
       statusLeft={`${projects.length} proje`}
       statusRight={isOwn ? 'Bu senin profilin' : ''}
@@ -126,14 +126,14 @@ export default function Profile() {
       <div className="section-title">{isOwn ? 'TÜM PROJELERİM' : 'HERKESE AÇIK PROJELER'}</div>
       {projects.length === 0 ? (
         <div className="empty-state">
-          <div className="glyph"><i className="fa-regular fa-folder-open" /></div>
+          <div className="glyph"><i className="fa-solid fa-utensils" /></div>
           <div>{isOwn ? 'Henüz projen yok.' : 'Bu kullanıcının herkese açık projesi yok.'}</div>
         </div>
       ) : (
         <div className="icon-grid">
           {projects.map((p) => (
             <div key={p.id} className="icon-item" onDoubleClick={() => navigate(`/projects/${p.id}`)} onClick={(e) => e.detail === 2 && navigate(`/projects/${p.id}`)}>
-              <div className="glyph"><i className={p.visibility === 'private' ? 'fa-solid fa-lock' : 'fa-solid fa-folder'} /></div>
+              <div className="glyph"><i className={p.visibility === 'private' ? 'fa-solid fa-lock' : 'fa-solid fa-bowl-food'} /></div>
               <div className="name">{p.title}</div>
               <div className="meta"><i className="fa-solid fa-star" style={{ color: 'var(--warning)' }} /> {p.stars}</div>
             </div>

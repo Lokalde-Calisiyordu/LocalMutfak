@@ -61,7 +61,7 @@ export default function EditorWorkspace() {
     }
   }
 
-  if (loading) return <Window icon={<i className="fa-solid fa-hourglass-half" />} title="Yükleniyor…"><p>Workspace yükleniyor…</p></Window>;
+  if (loading) return <Window icon={<i className="fa-solid fa-fire-burner" />} title="Yükleniyor…"><p>Workspace yükleniyor…</p></Window>;
   if (error) return <Window icon={<i className="fa-solid fa-triangle-exclamation" />} title="Hata"><div className="error-box">{error}</div></Window>;
 
   const codeFiles = files.filter((f) => f.type !== 'lib');
@@ -81,7 +81,7 @@ export default function EditorWorkspace() {
   return (
     <Window
       icon={<i className="fa-solid fa-laptop-code" />}
-      title={`Kod Editörü: ${title} — Localde Çalışıyordu`}
+      title={`Kod Editörü: ${title} — LocalMutfak`}
       width="100%"
       statusLeft={active?.filename || ''}
       statusRight={statusText}

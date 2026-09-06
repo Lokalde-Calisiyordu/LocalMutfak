@@ -5,9 +5,9 @@ import api from '../api.js';
 
 const APPS = [
   { path: '/explore', label: 'Keşfet', icon: 'fa-solid fa-earth-americas' },
-  { path: '/projects/new', label: 'Yeni Proje', icon: 'fa-solid fa-file-circle-plus' },
-  { path: '/my-projects', label: 'Projelerim', icon: 'fa-solid fa-folder-open' },
-  { path: '/messages', label: 'Mesajlar', icon: 'fa-solid fa-envelope' },
+  { path: '/projects/new', label: 'Yeni Proje', icon: 'fa-solid fa-mortar-pestle' },
+  { path: '/my-projects', label: 'Projelerim', icon: 'fa-solid fa-utensils' },
+  { path: '/messages', label: 'Mesajlar', icon: 'fa-solid fa-bell-concierge' },
 ];
 
 function useClock() {
@@ -55,12 +55,12 @@ export default function Shell({ children, wide }) {
 
       {menuOpen && (
         <div className="start-menu bevel-raised" onClick={(e) => e.stopPropagation()}>
-          <div className="start-menu-rail">LOCALDE ÇALIŞIYORDU</div>
+          <div className="start-menu-rail">LOCALMUTFAK</div>
           <div className="start-menu-items">
             <div className="start-menu-item" onClick={() => go('/explore')}><i className="fa-solid fa-earth-americas icon-inline" />Keşfet</div>
-            <div className="start-menu-item" onClick={() => go('/my-projects')}><i className="fa-solid fa-folder-open icon-inline" />Projelerim</div>
-            <div className="start-menu-item" onClick={() => go('/projects/new')}><i className="fa-solid fa-file-circle-plus icon-inline" />Yeni Proje Oluştur</div>
-            <div className="start-menu-item" onClick={() => go('/messages')}><i className="fa-solid fa-envelope icon-inline" />Mesajlar</div>
+            <div className="start-menu-item" onClick={() => go('/my-projects')}><i className="fa-solid fa-utensils icon-inline" />Projelerim</div>
+            <div className="start-menu-item" onClick={() => go('/projects/new')}><i className="fa-solid fa-mortar-pestle icon-inline" />Yeni Proje Oluştur</div>
+            <div className="start-menu-item" onClick={() => go('/messages')}><i className="fa-solid fa-bell-concierge icon-inline" />Mesajlar</div>
             <div className="start-menu-sep" />
             <div className="start-menu-item" onClick={() => go(`/u/${user?.username}`)}><i className="fa-solid fa-user icon-inline" />{user?.username}</div>
             <div className="start-menu-sep" />
@@ -76,7 +76,7 @@ export default function Shell({ children, wide }) {
           className={'start-btn' + (menuOpen ? ' open' : '')}
           onClick={(e) => { e.stopPropagation(); setMenuOpen((v) => !v); }}
         >
-          <i className="fa-solid fa-grip icon-inline" />Başlat
+          <i className="fa-solid fa-kitchen-set icon-inline" />Menü
         </div>
         <div className="taskbar-apps">
           {APPS.map((a) => (
